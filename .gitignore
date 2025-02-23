@@ -2,3 +2,4 @@
 .vscode
 .env
 google.json
+.aider*

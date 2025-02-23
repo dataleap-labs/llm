@@ -24,6 +24,14 @@ func NewOpenAILLM(apiKey string) *OpenAILLM {
 	return &OpenAILLM{client: client}
 }
 
+// NewOpenAILLMWithBaseURL creates a new OpenAI LLM client with a custom base URL
+func NewOpenAILLMWithBaseURL(apiKey string, baseURL string) *OpenAILLM {
+	config := openai.DefaultConfig(apiKey)
+	config.BaseURL = baseURL
+	client := openai.NewClientWithConfig(config)
+	return &OpenAILLM{client: client}
+}
+
 func NewAzureLLM(apiKey string, azureOpenAIEndpoint string) *OpenAILLM {
 	// The latest API versions, including previews, can be found here:
 	// https://learn.microsoft.com/en-us/azure/ai-services/openai/reference#rest-api-versioning
